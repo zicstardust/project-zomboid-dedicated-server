@@ -11,7 +11,7 @@ JRE25_VERSION="25.32.21-ca-jre25.0.2"
 
 
 #Set MAX_RAM
-sed -i "s/Xmx8g/Xmx${MAX_RAM:-4g}/" /app/ProjectZomboid64.json
+sed -i "s/Xmx8g/Xmx${MAX_RAM:-8g}/" /app/ProjectZomboid64.json
 
 
 #Set server language

@@ -47,7 +47,7 @@ services:
 | `ADMIN_USERNAME` | Set admin username | admin | |
 | `ADMIN_PASSWORD` | Set admin password | `generate random password` | Random password can be viewed in container log |
 | `STEAM` | set `false` to join non-steam players | true |
-| `MAX_RAM` | set max ram to JVM | 4g | 8g = 8 gigabytes<br/>2048m = 2048 megabytes |
+| `MAX_RAM` | set max ram to JVM | 8g | 8g = 8 gigabytes<br/>2048m = 2048 megabytes |
 | `LANGUAGE` | set server language | en | [Look at the supported server languages section](#supported-server-languages) |
 | `UPDATE_JRE` | Update default JRE (experimental)| false | |
 | `DISABLE_MOD_DOWNLOADER` | Disable auto mods downloader for non-steam server | false | [Look at the set Auto download mods for non-steam server section](#auto-download-mods-for-non-steam-server) |
