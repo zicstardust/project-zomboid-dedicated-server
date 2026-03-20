@@ -57,9 +57,9 @@ services:
 
 | Value | Description | Server version |
 | :----: | --- | :---: |
-| `42`, `unstable` | Last Unstable Server | 42.15.3  |
-| `42_oldunstable`, `outdatedunstable` | Unstable fallback for rollbacks and prior saves | 42.15.2  |
-| `41`, `stable` | Last Stable Server | 41.78.18 |
+| `unstable` | Last Unstable Server | 42.15.3  |
+| `outdatedunstable` | Unstable fallback for rollbacks and prior saves | 42.15.2  |
+| `stable` | Last Stable Server | 41.78.18 |
 
 ## Supported server languages
 | Value | Language name |
