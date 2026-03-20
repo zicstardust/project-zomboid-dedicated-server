@@ -57,9 +57,9 @@ services:
 
 | Value | Description | Server version |
 | :----: | --- | :---: |
-| `42`, `unstable` | Last Unstable Server | 42.15.2  |
-| `42_oldunstable`, `outdatedunstable` | Unstable fallback for rollbacks and prior saves | 42.14.1  |
-| `41`, `stable` | Last Stable Server | 41.78.16 |
+| `42`, `unstable` | Last Unstable Server | 42.15.3  |
+| `42_oldunstable`, `outdatedunstable` | Unstable fallback for rollbacks and prior saves | 42.15.2  |
+| `41`, `stable` | Last Stable Server | 41.78.18 |
 | `41.78.7` | Legacy build 41 Server | 41.78.7 |
 | `41.77` | Legacy build 41 Server | 41.77 |
 | `40` | Classic Zomboid | 40.43 |
