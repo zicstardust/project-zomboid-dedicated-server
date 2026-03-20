@@ -6,18 +6,12 @@ set -e
 : "${DISABLE_MOD_DOWNLOADER:=false}"
 
 BUILD=$1
-JRE8_VERSION="8.92.0.21-ca-jre8.0.482"
 JRE17_VERSION="17.64.17-ca-jre17.0.18"
 JRE25_VERSION="25.32.21-ca-jre25.0.2"
 
 
 #Set MAX_RAM
-sed -i "s/Xmx2048m/Xmx${MAX_RAM:-4g}/" /app/ProjectZomboid64.json #BUILD <= 40
-sed -i "s/Xmx8g/Xmx${MAX_RAM:-4g}/" /app/ProjectZomboid64.json #BUILD >= 41
-
-
-#Remove JRE -Xms arg (BUILD <= 40)
-#sed '/Xms2048m/d' /app/ProjectZomboid64.json
+sed -i "s/Xmx8g/Xmx${MAX_RAM:-4g}/" /app/ProjectZomboid64.json
 
 
 #Set server language
@@ -31,12 +25,6 @@ sed -i '/"-Dzomboid.steam=1",/ a\
 		"-Ddeployment.user.cachedir=/data",\' /app/ProjectZomboid64.json
 
 
-#Set ulimit from server BUILD <= 39
-if awk "BEGIN {exit !($BUILD <= 39)}"; then
-    sed -i '/INSTDIR="`pwd`"/ a\ulimit -n 4096\' /app/start-server.sh
-fi
-
-
 #Set STEAM
 if [[ "$STEAM" =~ ^(0|false|False|n|N)$ ]]; then
     sed -i "s/-Dzomboid.steam=1/-Dzomboid.steam=0/" /app/ProjectZomboid64.json
@@ -44,12 +32,10 @@ fi
 
 #Update JRE
 if [[ "$UPDATE_JRE" =~ ^(1|true|True|y|Y)$ ]]; then
-    if awk "BEGIN {exit !($BUILD <= 40)}"; then
-        JRE_VERSION=$JRE8_VERSION
-    elif awk "BEGIN {exit !($BUILD >= 42)}"; then
-        JRE_VERSION=$JRE25_VERSION
-    else
+    if [ "$BUILD" == "41" ]; then
         JRE_VERSION=$JRE17_VERSION
+    else
+        JRE_VERSION=$JRE25_VERSION
     fi
 
     echo "Updating JRE to ${JRE_VERSION}..."

@@ -60,12 +60,6 @@ services:
 | `42`, `unstable` | Last Unstable Server | 42.15.3  |
 | `42_oldunstable`, `outdatedunstable` | Unstable fallback for rollbacks and prior saves | 42.15.2  |
 | `41`, `stable` | Last Stable Server | 41.78.18 |
-| `41.78.7` | Legacy build 41 Server | 41.78.7 |
-| `41.77` | Legacy build 41 Server | 41.77 |
-| `40` | Classic Zomboid | 40.43 |
-| `39` | Last Build 39 Server | 39.67.5 |
-| `38` | Final pre-vehicles version | 38.30 |
-
 
 ## Supported server languages
 | Value | Language name |

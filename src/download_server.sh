@@ -23,16 +23,6 @@ elif [ "$BUILD" == "42_oldunstable" ]; then
     APP_CACHE="0"
 elif [ "$BUILD" == "41" ]; then
     BRANCHE="public"
-elif [ "$BUILD" == "41.78.7" ]; then
-    BRANCHE="legacy_41_78_7"
-elif [ "$BUILD" == "41.77" ]; then
-    BRANCHE="legacy41_77"
-elif [ "$BUILD" == "40" ]; then
-    BRANCHE="legacy40"
-elif [ "$BUILD" == "39" ]; then
-    BRANCHE="build-39-vehicles"
-elif [ "$BUILD" == "38" ]; then
-    BRANCHE="38.30(pre-vehicles)"
 else
     echo "BUILD ${BUILD} not supported"
     exit 1
@@ -53,5 +43,4 @@ if [[ "$DISABLE_CACHE" =~ ^(0|false|False|n|N)$ ]]; then
 fi
 
 
-#Configure server
 configure_server.sh $BUILD
