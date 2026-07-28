@@ -58,7 +58,9 @@ services:
 | :----: | --- |
 | `unstable` | Last Unstable Server |
 | `outdatedunstable` | Unstable fallback for rollbacks and prior saves |
-| `stable` | Last Stable Server | 
+| `stable`, `42` | Last Stable Server | 
+| `42.19` | Legacy Unstable 42.19 for rollbacks and prior saves |
+| `legacy_41`,`41`  | Last 41 build Server | 
 
 ## Supported server languages
 | Value | Language name |
