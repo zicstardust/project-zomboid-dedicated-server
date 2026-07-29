@@ -13,7 +13,7 @@ elif [ "$BUILD" == "42.19" ]; then
     BRANCHE="42.19"
 elif [ "$BUILD" == "stable" ] || [ "$BUILD" == "42" ]; then
     BRANCHE="public"
-elif [ "$BUILD" == "legacy_41" ] || [ "$BUILD" == "41" ]; then
+elif [ "$BUILD" == "41" ]; then
     BRANCHE="legacy41"
 else
     echo "BUILD ${BUILD} not supported"
