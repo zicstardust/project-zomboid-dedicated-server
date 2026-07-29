@@ -6,9 +6,8 @@ set -e
 : "${DISABLE_MOD_DOWNLOADER:=false}"
 
 BUILD=$1
-JRE17_VERSION="17.66.19-ca-jre17.0.19"
-JRE25_VERSION="25.34.17-ca-jre25.0.3"
-
+JRE17_VERSION="17.68.17-ca-jre17.0.20"
+JRE25_VERSION="25.36.15-ca-jre25.0.4"
 
 #Set MAX_RAM
 sed -i "s/Xmx8g/Xmx${MAX_RAM:-8g}/" /app/ProjectZomboid64.json

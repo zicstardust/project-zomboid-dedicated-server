@@ -8,20 +8,15 @@ mountpoint /cache &> /dev/null || DISABLE_CACHE="true"
 
 
 if [ "$BUILD" == "unstable" ]; then
-    BUILD="42"
-elif [ "$BUILD" == "outdatedunstable" ]; then
-    BUILD="42_oldunstable"
-elif [ "$BUILD" == "stable" ]; then
-    BUILD="41"
-fi
-
-
-if [ "$BUILD" == "42" ]; then
     BRANCHE="unstable"
-elif [ "$BUILD" == "42_oldunstable" ]; then
+elif [ "$BUILD" == "outdatedunstable" ]; then
     BRANCHE="outdatedunstable"
-elif [ "$BUILD" == "41" ]; then
+elif [ "$BUILD" == "42.19" ]; then
+    BRANCHE="42.19"
+elif [ "$BUILD" == "stable" ] || [ "$BUILD" == "42" ]; then
     BRANCHE="public"
+elif [ "$BUILD" == "legacy_41" ] || [ "$BUILD" == "41" ]; then
+    BRANCHE="legacy41"
 else
     echo "BUILD ${BUILD} not supported"
     exit 1
