@@ -7,9 +7,7 @@ set -e
 mountpoint /cache &> /dev/null || DISABLE_CACHE="true"
 
 
-if [ "$BUILD" == "unstable" ]; then
-    BRANCHE="unstable"
-elif [ "$BUILD" == "outdatedunstable" ]; then
+if [ "$BUILD" == "outdatedunstable" ]; then
     BRANCHE="outdatedunstable"
 elif [ "$BUILD" == "42.19" ]; then
     BRANCHE="42.19"
