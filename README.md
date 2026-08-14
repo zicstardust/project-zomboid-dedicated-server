@@ -57,7 +57,6 @@ services:
 | Value | Description |
 | :----: | --- |
 | `stable`, `42` | Last Stable Server | 
-| `outdatedunstable` | Unstable fallback for rollbacks and prior saves |
 | `42.19` | Legacy Unstable 42.19 for rollbacks and prior saves |
 | `41`  | Last 41 build Server | 
 
