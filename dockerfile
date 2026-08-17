@@ -29,6 +29,10 @@ RUN chmod +x /entrypoint.sh; \
 	tar zxvf steamcmd_linux.tar.gz -C /opt/steamcmd/; \
 	rm -f steamcmd_linux.tar.gz; \
 	\
+	groupadd -g 1000 pzserver; \
+	useradd -m -u 1000 -g 1000 -s /sbin/nologin pzserver; \
+	mkdir -p /home/pzserver; \
+	\
 	sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen; \
 	locale-gen
 

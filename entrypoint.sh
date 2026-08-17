@@ -5,15 +5,16 @@ set -e
 : "${PUID:=1000}"
 : "${PGID:=1000}"
 
-if ! getent group pzserver >/dev/null; then
-    groupadd -g "$PGID" pzserver
+if [ "$(id -g pzserver)" != "${PGID}" ]; then
+    groupmod -o -g "${PGID}" pzserver
 fi
 
-if ! id -u pzserver >/dev/null 2>&1; then
-    useradd -m -u "$PUID" -g "$PGID" -s /sbin/nologin pzserver
+
+if [ "$(id -u pzserver)" != "${PUID}" ]; then
+    usermod -o -u "${PUID}" pzserver
 fi
 
-mkdir -p /data /home/pzserver /cache
+mkdir -p /data /cache
 
 chown -R pzserver:pzserver /app /data /home/pzserver /opt/steamcmd /cache
 
