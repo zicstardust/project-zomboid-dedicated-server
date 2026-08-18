@@ -17,6 +17,8 @@ RUN chmod +x /entrypoint.sh; \
 		ca-certificates \
 		gosu \
 		wget \
+		curl \
+		jq \
 		locales \
 		lib32gcc-s1; \
 	apt-get -y autoremove; \

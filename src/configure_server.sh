@@ -6,8 +6,6 @@ set -e
 : "${DISABLE_MOD_DOWNLOADER:=false}"
 
 BUILD=$1
-JRE17_VERSION="17.68.17-ca-jre17.0.20"
-JRE25_VERSION="25.36.15-ca-jre25.0.4"
 
 #Set MAX_RAM
 sed -i "s/Xmx8g/Xmx${MAX_RAM:-8g}/" /app/ProjectZomboid64.json
@@ -32,14 +30,15 @@ fi
 #Update JRE
 if [[ "$UPDATE_JRE" =~ ^(1|true|True|y|Y)$ ]]; then
     if [ "$BUILD" == "41" ]; then
-        JRE_VERSION=$JRE17_VERSION
+        JRE_URL=$(curl -s "https://api.azul.com/metadata/v1/zulu/packages/?java_version=17&os=linux&arch=x64&archive_type=tar.gz&java_package_type=jre&availability_types=ca&crac_supported=false&javafx_bundled=false&latest=true" | jq -r '.[0].download_url')
     else
-        JRE_VERSION=$JRE25_VERSION
+        JRE_URL=$(curl -s "https://api.azul.com/metadata/v1/zulu/packages/?java_version=25&os=linux&arch=x64&archive_type=tar.gz&java_package_type=jre&availability_types=ca&crac_supported=false&javafx_bundled=false&latest=true" | jq -r '.[0].download_url')
     fi
+    JRE_VERSION=$(echo "$JRE_URL" | sed -n 's/.*zulu\([0-9.]*-ca-jre[0-9.]*\).*/\1/p')
 
     echo "Updating JRE to ${JRE_VERSION}..."
     rm -Rf /app/jre64
-    wget -q https://cdn.azul.com/zulu/bin/zulu${JRE_VERSION}-linux_x64.tar.gz
+    wget -q ${JRE_URL}
     tar -xf zulu${JRE_VERSION}-linux_x64.tar.gz
     rm -f zulu${JRE_VERSION}-linux_x64.tar.gz
     mv zulu${JRE_VERSION}-linux_x64 jre64
