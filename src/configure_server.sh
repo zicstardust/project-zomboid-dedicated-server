@@ -10,18 +10,6 @@ BUILD=$1
 #Set MAX_RAM
 sed -i "s/Xmx8g/Xmx${MAX_RAM:-8g}/" /app/ProjectZomboid64.json
 
-
-#Set server language
-sed -i '/"-Dzomboid.steam=1",/ a\
-		"-Duser.language=TEMP",\' /app/ProjectZomboid64.json
-sed -i "s/-Duser.language=TEMP/-Duser.language=${LANGUAGE:-en}/" /app/ProjectZomboid64.json
-
-
-#Set gamedata to /data
-sed -i '/"-Dzomboid.steam=1",/ a\
-		"-Ddeployment.user.cachedir=/data",\' /app/ProjectZomboid64.json
-
-
 #Set STEAM
 if [[ "$STEAM" =~ ^(0|false|False|n|N)$ ]]; then
     sed -i "s/-Dzomboid.steam=1/-Dzomboid.steam=0/" /app/ProjectZomboid64.json
