@@ -3,6 +3,8 @@ Project Zomboid dedicated server container with auto download of workshop mods f
 
 [GitHub](https://github.com/zicstardust/project-zomboid-dedicated-server)
 
+[Codeberg](https://codeberg.org/zicstardust/project-zomboid-dedicated-server) (Mirror Repository)
+
 ## Container
 ### Tags
 
