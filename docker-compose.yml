@@ -2,9 +2,14 @@ services:
   app:
     container_name: project_zomboid_dedicated_server
     image: project-zomboid-dedicated-server:latest
+    #platform: linux/arm64
+    #platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile
+      platform:
+        - linux/amd64
+        - linux/arm64
     env_file: .env
     ports:
       - 16261:16261/udp #Default Port

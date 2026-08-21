@@ -9,7 +9,7 @@ on:
       - 'src/**'
 
 env:
-  PLATAFORM_ARCH: linux/amd64
+  PLATAFORM_ARCH: linux/amd64,linux/arm64/v8
   BUILDX_NO_DEFAULT_ATTESTATIONS: 1
   
 jobs:
