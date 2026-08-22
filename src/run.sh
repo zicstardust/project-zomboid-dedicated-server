@@ -3,9 +3,6 @@
 #download server
 download_server.sh
 
-#Print server java version
-echo "SERVER JAVA VERSION: $(/app/jre64/bin/java --version)"
-
 #server run
 /app/start-server.sh \
     -Duser.language=${LANGUAGE:-en} \
