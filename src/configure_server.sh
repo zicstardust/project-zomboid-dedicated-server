@@ -17,14 +17,16 @@ fi
 
 #Update JRE
 if [[ "$UPDATE_JRE" =~ ^(1|true|True|y|Y)$ ]]; then
-    if [ "$BUILD" == "41" ]; then
-        JRE_URL=$(curl -s "https://api.azul.com/metadata/v1/zulu/packages/?java_version=17&os=linux&arch=x64&archive_type=tar.gz&java_package_type=jre&availability_types=ca&crac_supported=false&javafx_bundled=false&latest=true" | jq -r '.[0].download_url')
+     if [ "$BUILD" == "41" ]; then
+        JRE_MAJOR_VERSION="17"
     else
-        JRE_URL=$(curl -s "https://api.azul.com/metadata/v1/zulu/packages/?java_version=25&os=linux&arch=x64&archive_type=tar.gz&java_package_type=jre&availability_types=ca&crac_supported=false&javafx_bundled=false&latest=true" | jq -r '.[0].download_url')
+        JRE_MAJOR_VERSION="25"
     fi
+
+    JRE_URL=$(curl -s "https://api.azul.com/metadata/v1/zulu/packages/?java_version=${JRE_MAJOR_VERSION}&os=linux&arch=x64&archive_type=tar.gz&java_package_type=jre&availability_types=ca&crac_supported=false&javafx_bundled=false&latest=true" | jq -r '.[0].download_url')
     JRE_VERSION=$(echo "$JRE_URL" | sed -n 's/.*zulu\([0-9.]*-ca-jre[0-9.]*\).*/\1/p')
 
-    echo "Updating JRE to ${JRE_VERSION}..."
+    echo "Update default Java Runtime ${JRE_MAJOR_VERSION} to version ${JRE_VERSION}..."
     rm -Rf /app/jre64
     wget -q ${JRE_URL}
     tar -xf zulu${JRE_VERSION}-linux_x64.tar.gz
