@@ -9,7 +9,7 @@ on:
       - 'src/**'
 
 env:
-  PLATAFORM_ARCH: linux/amd64
+  PLATAFORM_ARCH: linux/amd64,linux/arm64/v8
   CONTAINER_REPO: ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.DOCKERHUB_REPOSITORY }}
   
 jobs:

@@ -5,7 +5,11 @@ current_dir=$(pwd)
 cd /opt/steamcmd
 
 while true; do
-    ./steamcmd.sh "$@"
+    if [ "$(uname -m)" = "aarch64" ]; then
+        box86 ./steamcmd.sh "$@"
+    else
+        ./steamcmd.sh "$@"
+    fi
     #echo "Steamcmd return code: $?"
     return_code=$?
     if [ "$return_code" == "0" ]; then
