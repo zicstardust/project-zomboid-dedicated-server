@@ -13,6 +13,7 @@ RUN chmod +x /entrypoint.sh; \
 	chmod +x /usr/local/bin/*; \
 	\
 	apt-get update; \
+	apt-get -y upgrade; \
 	apt-get -y --no-install-recommends install \
 		ca-certificates \
 		gosu \
