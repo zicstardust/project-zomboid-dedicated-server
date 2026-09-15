@@ -29,7 +29,7 @@ services:
       TZ: America/New_York
     ports:
       - 16261:16261/udp #Default_Port
-      #- 16262:16262/udp #Direct Connection
+      - 16262:16262/udp #Direct Connection
       #- 27015:27015 #Rcon port (IMPORTANT: set RCONPassword in server.ini)
     volumes:
       - /path/to/data:/data
@@ -74,6 +74,8 @@ services:
 | `de` | Deutsch |
 | `en` | English |
 | `es` | Espanol (ES) |
+| `es_cl` | Espanol (CL) |
+| `es_mx` | Espanol (MX) |
 | `fi` | Finnish |
 | `fr` | Francais |
 | `hu` | Hungarian |
@@ -83,12 +85,12 @@ services:
 | `ko` | Korean |
 | `nl` | Nederlands |
 | `no` | Norsk |
-| `ph` | Tagalog |
 | `pl` | Polish |
 | `pt` | Portugese |
 | `ptbr` | Brazilian Portugese |
 | `ro` | Romanian |
 | `ru` | Russian |
+| `strew` | Strewberrie |
 | `th` | Thai |
 | `tr` | Turkish |
 | `ua` | Ukrainian |
