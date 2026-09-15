@@ -1,4 +1,4 @@
-name: Push image tag latest to docker hub
+name: Push image to docker hub
 
 on:
   push:
@@ -35,11 +35,37 @@ jobs:
         with:
           platforms: ${{ env.PLATAFORM_ARCH }}
                 
-      - name: Build and push
+      - name: Build and push - Public branch
         uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile
+          build-args: BRANCHE=public
           platforms: ${{ env.PLATAFORM_ARCH }}
           push: true
-          tags: ${{ env.CONTAINER_REPO }}:latest
+          tags: |
+            ${{ env.CONTAINER_REPO }}:latest
+            ${{ env.CONTAINER_REPO }}:stable
+            ${{ env.CONTAINER_REPO }}:42
+
+      - name: Build and push - Legacy 42 branch
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          build-args: BRANCHE=legacy42
+          platforms: ${{ env.PLATAFORM_ARCH }}
+          push: true
+          tags: |
+            ${{ env.CONTAINER_REPO }}:42.19
+
+      - name: Build and push - Legacy 41 branch
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          build-args: BRANCHE=legacy41
+          platforms: ${{ env.PLATAFORM_ARCH }}
+          push: true
+          tags: |
+            ${{ env.CONTAINER_REPO }}:41

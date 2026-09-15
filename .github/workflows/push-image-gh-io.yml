@@ -1,4 +1,4 @@
-name: Push image tag latest to ghcr.io
+name: Push image to ghcr.io
 
 on:
   push:
@@ -37,13 +37,43 @@ jobs:
           platforms: ${{ env.PLATAFORM_ARCH }}
           #driver-opts: image=moby/buildkit:master
                 
-      - name: Build and push
+      - name: Build and push - Public branch
         uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile
           platforms: ${{ env.PLATAFORM_ARCH }}
           push: true
+          build-args: BRANCHE=public
           #proveance: false
           #sbom: false  
-          tags: ghcr.io/${{ GITHUB.REPOSITORY }}:latest
+          tags: |
+            ghcr.io/${{ GITHUB.REPOSITORY }}:latest
+            ghcr.io/${{ GITHUB.REPOSITORY }}:stable
+            ghcr.io/${{ GITHUB.REPOSITORY }}:42
+
+      - name: Build and push - Legacy 42 branch
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          platforms: ${{ env.PLATAFORM_ARCH }}
+          push: true
+          build-args: BRANCHE=legacy42
+          #proveance: false
+          #sbom: false  
+          tags: |
+            ghcr.io/${{ GITHUB.REPOSITORY }}:42.19
+
+      - name: Build and push - Legacy 41 branch
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          platforms: ${{ env.PLATAFORM_ARCH }}
+          push: true
+          build-args: BRANCHE=legacy41
+          #proveance: false
+          #sbom: false  
+          tags: |
+            ghcr.io/${{ GITHUB.REPOSITORY }}:41

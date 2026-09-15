@@ -8,9 +8,19 @@ Project Zomboid dedicated server container with auto download of workshop mods f
 ## Container
 ### Tags
 
-| Tag | Architecture | Description |
-| :----: | :----: | :----: |
-| [`latest`](https://github.com/zicstardust/project-zomboid-dedicated-server/blob/main/dockerfile) | amd64 | Dedicated Server |
+| Tag | Description |
+| :----: | :----: |
+| `latest`, `stable`, `42` | Latest Stable Server |
+| `42.19` | Legacy Unstable 42.19 build Server |
+| `41` | Legacy Stable 41 build Server |
+
+
+### Supported Architectures
+
+| Architecture | Available 
+| :----: | :----: |
+| amd64 | ✅ |
+
 
 ### Registries
 | Registry | Full image name | Description |
@@ -33,7 +43,6 @@ services:
       #- 27015:27015 #Rcon port (IMPORTANT: set RCONPassword in server.ini)
     volumes:
       - /path/to/data:/data
-      - /path/to/cache:/cache #Opcional: Download cache
 ```
 
 ## Environment variables
@@ -43,7 +52,6 @@ services:
 | `TZ` | Set Timezone | | |
 | `PUID` | Set UID | 1000 | |
 | `PGID` | Set GID | 1000 | |
-| `BUILD` | Set build server version | stable | [Look at the set build section](#set-build) |
 | `SERVER_NAME` | Set server name | server | |
 | `ADMIN_USERNAME` | Set admin username | admin | |
 | `ADMIN_PASSWORD` | Set admin password | `generate random password` | Random password can be viewed in container log |
@@ -52,15 +60,7 @@ services:
 | `LANGUAGE` | set server language | en | [Look at the supported server languages section](#supported-server-languages) |
 | `UPDATE_JRE` | Update default JRE (experimental)| false | |
 | `DISABLE_MOD_DOWNLOADER` | Disable auto mods downloader for non-steam server | false | [Look at the set Auto download mods for non-steam server section](#auto-download-mods-for-non-steam-server) |
-| `DISABLE_CACHE` | Disable download cache | false | |
 
-## Set BUILD
-
-| Value | Description |
-| :----: | --- |
-| `stable`, `42` | Last Stable Server | 
-| `42.19` | Legacy Unstable 42.19 build Server |
-| `41`  | Legacy Stable 41 build Server | 
 
 ## Supported server languages
 | Value | Language name |
@@ -103,3 +103,15 @@ Mods in the `WorkshopItems` key will automatically be downloaded and will replac
 To disable automatic mod downloads, set the `DISABLE_MOD_DOWNLOADER` environment variable to `true`.
 
 For Steam server (`STEAM=true`), mod downloader will not run.
+
+
+## Update from legacy container
+This container has undergone significant changes; if you attempt to run the new version using the old environment variables, the container will stop execution to prevent map corruption.
+
+Adjustments required to run the new container version:
+
+1 - Remove the BUILD environment variable:
+The BUILD environment variable is no longer used; instead, [use the container tag](#tags) corresponding to your server version.
+
+2 - Remove the DISABLE_CACHE environment variable and the /cache volume:
+The new version does not generate a download cache file, as the server is downloaded during the image build process.

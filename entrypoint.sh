@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+check_legacy_container.sh
+return_code=$?
+if [ "$return_code" != "0" ]; then
+    exit 1
+fi
+
 set -e
 
 : "${PUID:=1000}"

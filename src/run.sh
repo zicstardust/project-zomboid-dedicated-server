@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#download server
-download_server.sh
+#configure server
+configure_server.sh
 
 #server run
 /app/start-server.sh \
