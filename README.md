@@ -58,9 +58,10 @@ services:
 
 | Value | Description |
 | :----: | --- |
-| `stable`, `42` | Last Stable Server | 
+| `stable`, `42` | Last Stable Server |
+| `unstable` | Last Unstable Server |
 | `42.19` | Legacy Unstable 42.19 build Server |
-| `41`  | Legacy Stable 41 build Server | 
+| `41`  | Legacy Stable 41 build Server |
 
 ## Supported server languages
 | Value | Language name |

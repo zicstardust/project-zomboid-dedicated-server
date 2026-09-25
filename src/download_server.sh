@@ -11,6 +11,8 @@ if [ "$BUILD" == "42.19" ]; then
     BRANCHE="42.19"
 elif [ "$BUILD" == "stable" ] || [ "$BUILD" == "42" ]; then
     BRANCHE="public"
+elif [ "$BUILD" == "unstable" ]; then
+    BRANCHE="unstable"
 elif [ "$BUILD" == "41" ]; then
     BRANCHE="legacy41"
 else
