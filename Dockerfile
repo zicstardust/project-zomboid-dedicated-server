@@ -1,5 +1,6 @@
 FROM debian:13.7-slim
 
+#ARG BRANCHE=unstable
 #ARG BRANCHE=public
 #ARG BRANCHE=42.19
 #ARG BRANCHE=legacy41

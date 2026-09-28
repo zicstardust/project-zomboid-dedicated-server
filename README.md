@@ -10,6 +10,7 @@ Project Zomboid dedicated server container with auto download of workshop mods f
 
 | Tag | Description |
 | :----: | :----: |
+| `unstable` | Latest Unstable Server |
 | `latest`, `stable`, `42` | Latest Stable Server |
 | `42.19` | Legacy Unstable 42.19 build Server |
 | `41` | Legacy Stable 41 build Server |

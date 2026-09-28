@@ -48,6 +48,17 @@ jobs:
             ${{ env.CONTAINER_REPO }}:stable
             ${{ env.CONTAINER_REPO }}:42
 
+      - name: Build and push - Unstable branch
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          build-args: BRANCHE=unstable
+          platforms: ${{ env.PLATAFORM_ARCH }}
+          push: true
+          tags: |
+            ${{ env.CONTAINER_REPO }}:unstable
+
       - name: Build and push - Legacy 42 branch
         uses: docker/build-push-action@v7
         with:

@@ -52,6 +52,19 @@ jobs:
             ghcr.io/${{ GITHUB.REPOSITORY }}:stable
             ghcr.io/${{ GITHUB.REPOSITORY }}:42
 
+      - name: Build and push - Unstable branch
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          platforms: ${{ env.PLATAFORM_ARCH }}
+          push: true
+          build-args: BRANCHE=unstable
+          #proveance: false
+          #sbom: false  
+          tags: |
+            ghcr.io/${{ GITHUB.REPOSITORY }}:unstable
+
       - name: Build and push - Legacy 42 branch
         uses: docker/build-push-action@v7
         with:
