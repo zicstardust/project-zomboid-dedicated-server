@@ -1,15 +1,16 @@
 services:
-  app:
-    container_name: project_zomboid_dedicated_server
-    image: project-zomboid-dedicated-server:latest
+  pzserver_stable:
+    container_name: pzserver_${BRANCHE:-stable}
+    image: project-zomboid-dedicated-server:${BRANCHE:-latest}
     build:
+      args:
+        BRANCHE: ${BRANCHE:-public}
       context: .
       dockerfile: Dockerfile
     env_file: .env
     ports:
       - 16261:16261/udp #Default Port
-      #- 16262:16262/udp #Direct Connection
+      - 16262:16262/udp #Direct Connection
       - 27015:27015 #Rcon
     volumes:
       - ./data:/data
-      - ./cache:/cache
