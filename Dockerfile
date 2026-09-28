@@ -1,4 +1,4 @@
-FROM debian:13.6-slim
+FROM debian:13.7-slim
 
 #ARG BRANCHE=public
 #ARG BRANCHE=42.19
@@ -17,6 +17,7 @@ RUN chmod +x /entrypoint.sh; \
 	chmod +x /usr/local/bin/*; \
 	\
 	apt-get update; \
+	apt-get -y upgrade; \
 	apt-get -y --no-install-recommends install \
 		ca-certificates \
 		gosu \
